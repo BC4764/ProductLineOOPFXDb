@@ -1,6 +1,4 @@
-# ProductLineOOPFXDb
-OOP project
-# Project Title
+# Project Title  ProductLineOOPFXDb
 
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#demonstration)Demonstration
 
