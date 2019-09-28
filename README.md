@@ -17,7 +17,9 @@ Benjamin Cano
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#license)License
 
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#acknowledgments)Acknowledgments
-
+https://www.tutorialspoint.com/javafx/javafx_css.htm
+https://www.tutorialspoint.com/jdbc/jdbc-insert-records.htm
+https://docs.oracle.com/javase/8/javafx/api/javafx/fxml/doc-files/introduction_to_fxml.html#controllers
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#history)History
 
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#key-programming-concepts-utilized)Key Programming Concepts Utilized
