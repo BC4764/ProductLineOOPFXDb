@@ -50,7 +50,8 @@
           <Label text="Product name" GridPane.rowIndex="3"/>
           <Label text="Item Type" GridPane.rowIndex="5"/>
         </GridPane>
-        <Button layoutX="450.0" layoutY="276.0" mnemonicParsing="false" text="Add Product" onAction="#handleSubmitButtonAction"/>/>
+        <Button layoutX="450.0" layoutY="276.0" mnemonicParsing="false" text="Add Product"
+          onAction="#handleSubmitButtonAction"/>/>
       </AnchorPane>
     </Tab>
     <Tab text="Produce">
