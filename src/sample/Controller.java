@@ -24,7 +24,7 @@ public class Controller {
   private static final String jcbdDriver = "org.h2.Driver";
 
   private static final String dbUrl =
-      "jdbc:h2:./res/HR";
+      "jdbc:h2:./res/ProductionDB";
 
   private static final String user = "username";
 
