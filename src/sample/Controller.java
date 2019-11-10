@@ -1,115 +1,88 @@
-// benjamin cano
-// Date: 9/16/2019
-// extra code that is used or pulled from main
-
+/**
+ * ********************************************************* File : Controller.Java Author(s) :
+ * Benjamin Cano Class : COP 3003 Purpose : File containing the main functionality of the program.
+ * **********************************************************
+ */
 package sample;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*; // checkstyle warning
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TextField;
-import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 
+/** code that controls what happens whenever an event occurs. */
 @SuppressWarnings("ALL")
-public class Controller {
-  /** data base connectivity is established */
-  private static final String jcbdDriver = "org.h2.Driver";
+public class Controller { // code inspection error: can be private
+  @FXML public Button AddProductButton; // checkstyle warning
+  @FXML private ComboBox ProduceComboBox; // checkstyle warning
+  @FXML public Button RecordProduction; // checkstyle warning
+  @FXML private ChoiceBox ChooseType; // checkstyle warning
+  @FXML private TextArea txtArea_ProdLog;
 
-  private static final String dbUrl =
-      "jdbc:h2:./res/ProductionDB";
-
-  private static final String user = "username";
-
-  private static final String pass = "password";
-
-  private Connection conn = null;
-
-  private Statement stmt = null;
-  /** Each component that will be used in the FXML from SceneBuilder */
-  @FXML private TextField prod_NameTxtBox;
-
-  @FXML private TextField manufact_TxtBox;
-  @FXML private ChoiceBox<?> type_Choicebox;
-  @FXML private TableColumn<?, ?> exist_Products;
-  @FXML private Button add_Button;
-  @FXML private Button record_ProductionBtn;
-  /** Main method of the controller to establish connection */
-  public static void main(String[] args) {
-    System.out.println("Database Connected");
+  /** - Button is clicked to add a product. */
+  public void handleAddButtonAction() {
+    // Button was clicked, print this
+    System.out.println("product added");
   }
-  /** will display the products that are currently in the database */
+
+  /** button clicked to add a record to database. */
   @FXML
-  void display_products(CellEditEvent<?, ?> event) {
-    /** the try statement is used to call the driver and to connect the the database */
-    try {
-      Class.forName(jcbdDriver);
-      conn = DriverManager.getConnection(dbUrl, user, pass);
-      stmt = conn.createStatement();
-      String sql = "SELECT * FROM PRODUCT";
-      ResultSet rs = stmt.executeQuery(sql);
-      /** loop is made to display the information entered line by line */
-      while (rs.next()) {
-        System.out.println(rs.getString(1));
-      } // End of while.
-      stmt.close();
-      conn.close();
-      /** the catch is used so the application is not terminated and is able to function */
-    } catch (ClassNotFoundException | SQLException e) {
-      e.printStackTrace();
-    } // End of catch.
+  public void handleRecordButtonAction() {
+    // button was clicked, print this
+    System.out.println("");
   }
-  /** this is the function that will allow the user to enter products to the database */
-  @FXML
-  void add_product(MouseEvent event) {
+@FXML
+public void setTxtArea_ProdLog(){
+    txtArea_ProdLog.setText(toString());
+}
+  /** drop down menu clicked to choose an item. */
+  public void handleChooseItem() {} // checkstyle wants } on separate line
+
+  /** Populate the comboBox with 1-10 values. Allow user to type in a number instead of clicking. */
+  public void initialize() {
+
+    final String jdbcDriver = "org.h2.Driver"; // checkstyle warning
+    final String dbUrl = "jdbc:h2:./res/H2"; // checkstyle warning
+
+
+    // Database Credentials
+    Connection conn;
+    Statement stmt;
+
     try {
-      Class.forName(jcbdDriver);
+      // STEP 1: Register JDBC driver
+      Class.forName(jdbcDriver);
 
-      conn = DriverManager.getConnection(dbUrl, user, pass);
+      // Step 2: Open a connection
+      conn = DriverManager.getConnection(dbUrl);
 
+      // Step 3: Execute a query
       stmt = conn.createStatement();
 
-      String sql =
-          "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES('NAME', 'TYPE', 'MANUFACTURER')";
+      String sq1 = "INSERT INTO PRODUCT(NAME, TYPE, MANUFACTURER) VALUES('iPod', 'AUDIO', 'Apple')";
 
-      stmt.executeUpdate(sql);
+      stmt.executeUpdate(sq1);
+
+      // STEP 4: Clean up environment
       stmt.close();
       conn.close();
+
     } catch (ClassNotFoundException | SQLException e) {
       e.printStackTrace();
     }
-    System.out.println("Product Added");
+
+    for (int i = 0; i <= 10; i++) {
+      ProduceComboBox.getItems().add(i);
+    }
+    ProduceComboBox.getSelectionModel().selectFirst();
+    ProduceComboBox.setEditable(true);
+
+    // enhanced for loop to populate the item choices
+    for (ItemType it : ItemType.values()) {
+      System.out.println(it + " " + it.values);
+      ChooseType.getItems().addAll(ItemType.values());
+    }
   }
-  /** this function is for the button labeled record production */
-  @FXML
-  void record_production(MouseEvent event) {
-    System.out.println("Your product has been recorded");
-  }
-  /** this function is to take the input entered in the text box */
-  public void input_products(CellEditEvent<?, ?> cellEditEvent) {
-    System.out.println("Product name has been entered");
-  }
-  /** function to display different production types into the choice box */
-  public void display_types(ContextMenuEvent contextMenuEvent) {
-    System.out.println("Production types have now been updated.");
-  }
-  /** this function will take in the users input from the text box and store it */
-  public void getProductName(MouseEvent mouseEvent) {
-    System.out.println("Product name has been selected.");
-  }
-  /** this function will take in the users input that is put in the manufacturer text box */
-  public void getManufacturer(MouseEvent mouseEvent) {
-    System.out.println("Manufactuer has been selected.");
-  }
-  /** this function is used by the choice box */
-  public void getType(MouseEvent mouseEvent) {
-    System.out.println("Type has been selected.");
-  } // End of getType.
 }
