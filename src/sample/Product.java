@@ -6,37 +6,33 @@ public abstract class Product implements Item {
   public String manufacturer;
   private String name;
 
-  public Product(String name, String manufacturer, ItemType type) {
+  public Product(String name, String manufacturer, ItemType type){
     this.name = name;
     this.manufacturer = manufacturer;
     this.Type = type;
   }
-
-  public ItemType getType() {
+  public ItemType getType(){
     return Type;
   }
-
-  public int getProductID() {
+  public int getProductID(){
     return productID;
   }
-
-  public String getManufacturer() {
+  public String getManufacturer(){
     return manufacturer;
   }
 
-  public void setManufacturer(String manufacturer) {
+  public void setManufacturer(String manufacturer){
     this.manufacturer = manufacturer;
   }
-
-  public String getName() {
+  public String getName(){
     return name;
   }
-
-  public void setName(String name) {
+  public void setName(String name){
     this.name = name;
   }
-
-  public String toString() {
-    return "Name: " + name + '\n' + "Manufacturer: " + manufacturer + '\n' + "Type: " + Type + '\n';
+  public String toString(){
+    return "Name: " + name + '\n' +
+        "Manufacturer: " + manufacturer + '\n' +
+        "Type: " + Type + '\n';
   }
 }

@@ -1,14 +1,13 @@
 package sample;
 
 import java.util.Date;
-import sample.Product;
 
 public class ProductionRecord {
   // private String manufacturer;
-  private int productionNumber;
+  private int ProdNum;
   private int productID;
   private String serialNumber;
-  private Date dateProduced;
+  private Date DateOfProduction;
 
   public ProductionRecord(Product productProduced, int itemCount) {
     String idNum = String.format("%05d", itemCount);
@@ -16,32 +15,32 @@ public class ProductionRecord {
         productProduced.manufacturer.substring(0, 3)
             + productProduced.getType().getValues()
             + idNum;
-    this.dateProduced = new Date();
+    this.DateOfProduction = new Date();
   }
 
   public ProductionRecord(int productID) {
     this.productID = productID;
-    productionNumber = 0;
+    ProdNum = 0;
     serialNumber = "0";
-    dateProduced = new Date();
+    DateOfProduction = new Date();
   }
 
   public ProductionRecord(
-      int productionNumber, int productID, String serialNumber, Date dateProduced) {
-    this.productionNumber = productionNumber;
+      int ProdNum, int productID, String serialNumber, Date DateOfProduction) {
+    this.ProdNum = ProdNum;
     this.productID = productID;
     this.serialNumber = serialNumber;
-    this.dateProduced = dateProduced;
+    this.DateOfProduction = DateOfProduction;
   }
 
   public String toString() {
     return "Prod. Num: "
-        + productionNumber
+        + ProdNum
         + " Product ID: "
         + productID
         + " Serial Num: "
         + serialNumber
         + " Date: "
-        + dateProduced;
+        + DateOfProduction;
   }
 }

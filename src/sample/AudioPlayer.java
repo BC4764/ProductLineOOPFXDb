@@ -1,6 +1,5 @@
 package sample;
 
-@SuppressWarnings("ALL")
 public class AudioPlayer extends Product implements MultimediaControl {
   private static final ItemType type = ItemType.AUDIO;
   final String supportedAudioFormats;
@@ -47,15 +46,5 @@ public class AudioPlayer extends Product implements MultimediaControl {
         + this.supportedAudioFormats
         + " \nSupported Playlist Formats: "
         + this.supportedPlaylistFormats);
-  }
-
-  @Override
-  public ItemType getType() {
-    return null;
-  }
-
-  @Override
-  public int getProductID() {
-    return 0;
   }
 }

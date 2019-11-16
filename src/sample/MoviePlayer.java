@@ -40,14 +40,4 @@ public class MoviePlayer extends Product implements MultimediaControl {
     System.out.print(super.toString());
     return (newScreen.toString() + "\nMonitor Type: " + monitorType.toString());
   }
-
-  @Override
-  public ItemType getType() {
-    return null;
   }
-
-  @Override
-  public int getProductID() {
-    return 0;
-  }
-}
