@@ -1,38 +1,102 @@
 package sample;
 
+/**
+ * Class containing the variables for the screen, containing getters and setter methods the for corresponding variables
+ * and a toString that returns the value of each variable when it is called while implementing the class ScreenSpec.
+ *
+ * @author - Benjamin Cano
+ */
 public class Screen implements ScreenSpec {
 
-  private final String getResolution;
-  private final int getRefreshRate;
-  private final int getResponseTime;
+  private String resolution;
+  private int refreshRate;
+  private int responseTime;
 
-  public Screen(String s, int i, int i1) {
-    this.getResolution = s;
-    this.getRefreshRate = i;
-    this.getResponseTime = i1;
+  /**
+   * Constructor that sets values to the variables.
+   *
+   * @param resolution - screen resolution.
+   * @param refreshRate - screen refresh rate.
+   * @param responseTime - screen response time.
+   */
+  Screen(
+      String resolution,
+      int refreshRate,
+      int responseTime) {
+    this.resolution = resolution;
+    this.refreshRate = refreshRate;
+    this.responseTime = responseTime;
   }
 
-  public String getResolution() {
-    return getResolution;
-  }
-
-  public int getRefreshRate() {
-    return getRefreshRate;
-  }
-
-  public int getResponseTime() {
-    return getResponseTime;
-  }
-
+  /**
+   * Method that will return a String once called to it.
+   *
+   * @return - A string.
+   */
   public String toString() {
+    return "Screen:"
+        + "\n"
+        + "Resolution: "
+        + resolution
+        + "\n"
+        + "Refresh rate: "
+        + refreshRate
+        + "\n"
+        + "Response time: "
+        + responseTime;
+  }
 
-    return ("Screen:"
-        + "\nResolution: "
-        + getResolution
-        + "\nRefresh rate: "
-        + getRefreshRate
-        + "\nResponse time: "
-        + getResponseTime);
+  /**
+   * get the screen's resolution.
+   *
+   * @return resolution.
+   */
+  public String getResolution() {
+    return resolution;
+  }
+
+  /**
+   * set the screen's resolution.
+   *
+   * @param resolution - screen resolution.
+   */
+  public void setResolution(String resolution) {
+    this.resolution = resolution;
+  }
+
+  /**
+   * get screen's refresh rate.
+   *
+   * @return - refresh rate.
+   */
+  public int getRefreshRate() {
+    return refreshRate;
+  }
+
+  /**
+   * set screen's refresh rate.
+   *
+   * @param refreshRate - refresh rate.
+   */
+  public void setRefreshRate(int refreshRate) {
+    this.refreshRate = refreshRate;
+  }
+
+  /**
+   * get screen's response time.
+   *
+   * @return response time.
+   */
+  public int getResponseTime() {
+    return responseTime;
+  }
+
+  /**
+   * set screen's response time.
+   *
+   * @param responseTime - response time.
+   */
+  public void setResponseTime(int responseTime) {
+    this.responseTime = responseTime;
   }
 }
-

@@ -5,23 +5,17 @@
  */
 package sample;
 
-import java.sql.*; // checkstyle warning
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 /** code that controls what happens whenever an event occurs. */
-@SuppressWarnings("ALL")
 public class Controller {
   @FXML private Button AddProductButton;
 
@@ -29,7 +23,7 @@ public class Controller {
 
   @FXML private Button RecordProduction;
 
-  @FXML private ChoiceBox ChooseType;
+  @FXML private ChoiceBox<String> ChooseType;
 
   @FXML private TextArea txtArea_ProdLog;
 
@@ -60,46 +54,45 @@ public class Controller {
    * displays it in the table view
    */
   public void handleAddButtonAction() throws SQLException {
-    // Defining an observable list
-    // Initializing variables of the textfields
+
     String productName = ProdName_TxtField.getText();
     String productManufacturer = Manufacturer_TxtField.getText();
-    String chooseType = String.valueOf(ChooseType.getValue());
-    // used so the database accepts input from the user
-    String data = "INSERT INTO PRODUCT (NAME, MANUFACTURER, TYPE) VALUES(?,?,?)";
-    // prepared statement/connection
-    PreparedStatement preparedStatement = conn.prepareStatement(data);
-    preparedStatement.setString(1, productName);
-    preparedStatement.setString(2, productManufacturer);
-    preparedStatement.setString(3, chooseType);
-    preparedStatement.executeUpdate();
+    String chooseType = ChooseType.getValue();
+
+    String data = "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) VALUES(?,?,?)";
+
+    PreparedStatement preparedStm = conn.prepareStatement(data);
+    preparedStm.setString(1, productName);
+    preparedStm.setString(2, productManufacturer);
+    preparedStm.setString(3, chooseType);
+    preparedStm.executeUpdate();
     System.out.println("Product has been added");
-    // used to clear the text fields
+
     ProdName_TxtField.clear();
     Manufacturer_TxtField.clear();
-    // when the button is pressed the tableview will populate with what the user has input
-    ProdNameCol.setCellValueFactory(new PropertyValueFactory<>("ProdNamwCol"));
-    ManufacturerCol.setCellValueFactory(new PropertyValueFactory<>("ManufacturerCol"));
-    TypeCol.setCellValueFactory(new PropertyValueFactory<>("TypeCol"));
-    // sets the items to the observable list
+
+    ProdNameCol.setCellValueFactory(new PropertyValueFactory<>("Product Name"));
+    ManufacturerCol.setCellValueFactory(new PropertyValueFactory<>("Manufacturer"));
+    TypeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
+
     ExistingProd.setItems(productLine);
     productLine.add(new Widget(productName, productManufacturer, ItemType.valueOf(chooseType)));
-    // sets the info from product line to the list view
+
     ProdListView.setItems(productLine);
-    // cleans up the environment
-    preparedStatement.close();
+
+    preparedStm.close();
     conn.close();
   }
   /** Populate the comboBox with 1-10 values. */
   public void initialize() {
-    // call to initizalize the database
+
     initializeData();
-    // observable list is used to populate the comboBox
+
     ObservableList<Integer> list = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     ProduceComboBox.setItems(list);
     ProduceComboBox.getSelectionModel().selectFirst();
     ProduceComboBox.setEditable(true);
-    // for loop that populates item choices
+
     ObservableList<String> itemList = FXCollections.observableArrayList();
     for (ItemType typeItem : ItemType.values()) {
       System.out.println(typeItem + " " + typeItem.values);
@@ -112,16 +105,13 @@ public class Controller {
   }
   /** Initializes the database by registering the JDBC driver and opening a connection. */
   private void initializeData() {
-    // Connection information
-    final String jdbcDriver = "org.h2.Driver"; // checkstyle warning
-    final String dbUrl = "jdbc:h2:./res/H2"; // checkstyle warning
-    System.out.println("Connecting to database...");
+
+    final String jdbcDriver = "org.h2.Driver";
+    final String dbUrl = "jdbc:h2:./res/H2";
+
     try {
-      // Register JDBC driver
       Class.forName(jdbcDriver);
-      // Open a connection
       conn = DriverManager.getConnection(dbUrl);
-      System.out.println("Successfully connected to the database!");
     } catch (ClassNotFoundException | SQLException e) {
       e.printStackTrace();
     }

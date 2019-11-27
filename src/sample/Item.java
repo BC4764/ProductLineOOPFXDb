@@ -1,15 +1,44 @@
 package sample;
 
+/**
+ * Interface that calls getters and setters
+ *
+ * @author - Benjamin Cano
+ */
 interface Item {
 
-    int getProductID();
+  /**
+   * get product ID.
+   *
+   * @return null.
+   */
+  int getProductID();
 
-    void setName(String name);
+  /**
+   * set name.
+   *
+   * @param name - name.
+   */
+  void setName(String name);
 
-    String getName();
+  /**
+   * get name.
+   *
+   * @return null.
+   */
+  String getName();
 
-    void setManufacturer(String manufacturer);
+  /**
+   * set manufacturer.
+   *
+   * @param manufacturer - manufacturer.
+   */
+  void setManufacturer(String manufacturer);
 
-    String getManufacturer();
-
-  }
+  /**
+   * get manufacturer.
+   *
+   * @return null.
+   */
+  String getManufacturer();
+}
