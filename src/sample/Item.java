@@ -5,7 +5,7 @@ package sample;
  *
  * @author - Benjamin Cano
  */
-interface Item {
+public interface Item {
 
   /**
    * get product ID.

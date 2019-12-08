@@ -5,7 +5,7 @@ package sample;
  *
  * @author - Benjamin Cano
  */
-interface MultimediaControl {
+public interface MultimediaControl {
   /** A method to play. */
   void play();
 

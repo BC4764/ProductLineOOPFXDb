@@ -1,8 +1,9 @@
 package sample;
 
 /**
- * Class containing the variables for the screen, containing getters and setter methods the for corresponding variables
- * and a toString that returns the value of each variable when it is called while implementing the class ScreenSpec.
+ * Class containing the variables for the screen, containing getters and setter methods the for
+ * corresponding variables and a toString that returns the value of each variable when it is called
+ * while implementing the class ScreenSpec.
  *
  * @author - Benjamin Cano
  */
@@ -19,10 +20,7 @@ public class Screen implements ScreenSpec {
    * @param refreshRate - screen refresh rate.
    * @param responseTime - screen response time.
    */
-  Screen(
-      String resolution,
-      int refreshRate,
-      int responseTime) {
+  Screen(String resolution, int refreshRate, int responseTime) {
     this.resolution = resolution;
     this.refreshRate = refreshRate;
     this.responseTime = responseTime;
@@ -51,8 +49,9 @@ public class Screen implements ScreenSpec {
    *
    * @return resolution.
    */
+  @Override
   public String getResolution() {
-    return resolution;
+    return null;
   }
 
   /**
@@ -70,7 +69,7 @@ public class Screen implements ScreenSpec {
    * @return - refresh rate.
    */
   public int getRefreshRate() {
-    return refreshRate;
+    return 0;
   }
 
   /**
@@ -88,7 +87,7 @@ public class Screen implements ScreenSpec {
    * @return response time.
    */
   public int getResponseTime() {
-    return responseTime;
+    return 0;
   }
 
   /**

@@ -5,7 +5,7 @@ package sample;
  *
  * @author - Benjamin Cano
  */
-interface ScreenSpec {
+public interface ScreenSpec {
 
   /**
    * get the resolution.

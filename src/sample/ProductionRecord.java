@@ -8,12 +8,12 @@ import java.util.Date;
  *
  * @author - Benjamin Cano
  */
-class ProductionRecord {
+public class ProductionRecord {
 
-  private int productionNumber;
-  private int productID;
-  private final String serialNumber;
-  private final Date dateProduced;
+  public int productionNumber;
+  public int productID;
+  public String serialNumber;
+  public Date dateProduced;
 
   /**
    * Constructor that sets variables to their values.
@@ -22,41 +22,29 @@ class ProductionRecord {
    * @param itemCount - integer that keeps count on the number of items
    */
   public ProductionRecord(Product productProduced, int itemCount) {
-    String idNum = String.format("%05d", itemCount);
-
-    this.serialNumber =
-        productProduced.manufacturer.substring(0, 3)
-            + productProduced.getType().getValues()
-            + idNum;
-    this.dateProduced = new Date();
-  }
-
-  /**
-   * one parameter constructor.
-   *
-   * @param productID - Id of product.
-   */
-  public ProductionRecord(int productID) {
-    this.productID = productID;
-    productionNumber = 0;
-    serialNumber = "0";
+    String itemC = String.format("%05d", itemCount);
     dateProduced = new Date();
+    serialNumber =
+        productProduced.getManufacturer().substring(0, 3) + productProduced.getType() + itemC;
+    this.productionNumber = 0;
+    this.productID = productProduced.getProductID();
+    this.dateProduced = new Date(dateProduced.getTime());
   }
 
   /**
    * Constructor that sets the values to the variables.
    *
-   * @param productionNumber - production number of product.
-   * @param productID - Id of product.
-   * @param serialNumber - serial number of product.
+   * @param productionNum1 - production number of product.
+   * @param productID1 - Id of product.
+   * @param serialNum1 - serial number of product.
    * @param dateProduced - date produced of product.
    */
   public ProductionRecord(
-      int productionNumber, int productID, String serialNumber, Date dateProduced) {
-    this.productionNumber = productionNumber;
-    this.productID = productID;
-    this.serialNumber = serialNumber;
-    this.dateProduced = dateProduced;
+      int productionNum1, int productID1, String serialNum1, Date dateProduced) {
+    this.productionNumber = productionNum1;
+    this.productID = productID1;
+    this.serialNumber = serialNum1;
+    this.dateProduced = new Date(dateProduced.getTime());
   }
 
   /**
@@ -73,5 +61,39 @@ class ProductionRecord {
         + serialNumber
         + " Date: "
         + dateProduced;
+  }
+
+  public int getProductionNumber() {
+    return productionNumber;
+  }
+
+  public void setProductionNumber(int productionNumber) {
+    this.productionNumber = productionNumber;
+  }
+
+  public int getProductID() {
+
+    return productID;
+  }
+
+  public void setProductID(int productID) {
+
+    this.productID = productID;
+  }
+
+  public String getSerialNumber() {
+    return serialNumber;
+  }
+
+  public void setSerialNum(String serialNum) {
+    this.serialNumber = serialNumber;
+  }
+
+  public Date getDateProduced() {
+    return dateProduced;
+  }
+
+  public void setDateProduced(Date dateProduced) {
+    this.dateProduced = dateProduced;
   }
 }

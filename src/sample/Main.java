@@ -7,13 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * A program where users will input data about the products that they make into a database.
  *
  * @author Benjamin Cano
  */
-public class Main extends Application { 
+public class Main extends Application {
 
   /**
-   * @param primaryStage 
+   * @param primaryStage the first thing the user sees
    * @throws Exception for the stage
    */
   @Override
@@ -30,7 +31,7 @@ public class Main extends Application {
    *
    * @param args - a String.
    */
-  public static void main(String[] args) { 
+  public static void main(String[] args) { // inspection code warning: Entry point.
     launch(args);
   }
 }

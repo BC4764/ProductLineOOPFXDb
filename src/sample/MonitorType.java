@@ -6,6 +6,7 @@ package sample;
  * @author - Benjamin Cano
  */
 public enum MonitorType {
-  LCD, // inspection code warning: field has no usages.
-  LED // inspection code warning: field has no usages.
+  TYPE("LED", "LCD");
+
+  MonitorType(String LED, String LCD) {}
 }
