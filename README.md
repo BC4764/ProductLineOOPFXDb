@@ -79,6 +79,7 @@ In addition to the ability to record production, the software also needs the abi
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#documentation)Documentation
 
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#diagrams)Diagrams
+![Class Diagram](C:\Users\Public\Pictures\Package sample.png)
 
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#getting-started)Getting Started
 
