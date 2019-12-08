@@ -83,9 +83,13 @@ In addition to the ability to record production, the software also needs the abi
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#getting-started)Getting Started
 
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#built-with)Built With
-
+IntelliJ Ultimate
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#author)Author
 Benjamin Cano
+## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#license)License
+
+## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#history)History
+
 ## [](https://github.com/PV-COP/PV-README-TEMPLATE/blob/master/TitleOnlyTemplate.md#acknowledgments)Acknowledgments
 https://www.tutorialspoint.com/javafx/javafx_css.htm
 https://www.tutorialspoint.com/jdbc/jdbc-insert-records.htm
