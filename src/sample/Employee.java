@@ -66,9 +66,9 @@ public class Employee extends Controller {
       setEmail(email);
     }
 
-    if (ValidationOfPassword(password) && checkName(name)) {
+    if (isValidPassword(password) && checkName(name)) {
       this.password = password;
-    } else if (!ValidationOfPassword(password)) {
+    } else if (!isValidPassword(password)) {
       this.password = "pw";
     }
   }
@@ -98,7 +98,7 @@ public class Employee extends Controller {
     }
   }
 
-  private boolean ValidationOfPassword(String password) {
+  private boolean isValidPassword(String password) {
     this.password = password;
     boolean upper = false;
     boolean lower = false;
